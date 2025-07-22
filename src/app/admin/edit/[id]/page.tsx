@@ -112,7 +112,7 @@ export default function EditProduct() {
       }
 
       // Handle image updates
-      let finalImages = currentImages.filter(img => !imagesToRemove.includes(img));
+      const finalImages = currentImages.filter(img => !imagesToRemove.includes(img));
       
       // Upload new images
       if (newImageFiles.length > 0) {
