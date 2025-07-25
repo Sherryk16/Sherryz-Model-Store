@@ -19,6 +19,7 @@ interface ProductCardProps {
   sizes?: string[] | null
   colors?: string[] | null
   monochrome?: boolean
+  description: string // Added description prop
 }
 
 export function ProductCard({
@@ -33,6 +34,7 @@ export function ProductCard({
   sizes,
   colors,
   monochrome = false,
+  description, // Added description prop
 }: ProductCardProps) {
   // Robust defaults
   const safeSizes = Array.isArray(sizes) ? sizes : []
@@ -59,7 +61,7 @@ export function ProductCard({
   }, [])
 
   const handleAddToCart = () => {
-    addToCart({ id, name, price, image_url: image, colors: colors || [] })
+    addToCart({ id, name, price, image_url: image, color: Array.isArray(colors) ? colors[0] : undefined })
     setIsAddedToCart(true)
     setTimeout(() => setIsAddedToCart(false), 2000)
   }
@@ -118,8 +120,9 @@ export function ProductCard({
           )}
           <span className={`absolute bottom-2 left-2 text-[10px] font-semibold px-2 py-0.5 rounded-full shadow ${categoryBadge}`}>{category}</span>
         </div>
-        <div className="flex-1 w-full flex flex-col items-center px-2">
-          <h3 className={`font-semibold text-lg mb-1 text-center line-clamp-2 transition ${heading}`}>{name || 'Product'}</h3>
+        <div className="px-4 pb-4 pt-2 flex-1 flex flex-col">
+          <h3 className={`font-semibold text-lg mb-1 ${heading}`}>{name}</h3>
+          <p className="text-gray-500 text-sm mb-2">{description}</p> {/* Display description */}
           <div className="mb-2 flex items-center gap-2">
             <span className={`inline-block font-bold px-3 py-1 rounded-full text-xs shadow-sm ${priceBadge}`}>PKR {price?.toLocaleString?.() ?? price}</span>
             {hasDiscount && (

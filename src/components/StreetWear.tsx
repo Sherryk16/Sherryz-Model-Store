@@ -15,6 +15,7 @@ interface Product {
   isNew?: boolean
   sizes?: string[]
   colors?: string[]
+  description?: string
 }
 
 export function StreetWear() {
@@ -58,6 +59,7 @@ export function StreetWear() {
             sizes={product.sizes}
             colors={product.colors}
             monochrome
+            description={product.description || ''}
           />
         ))}
       </div>

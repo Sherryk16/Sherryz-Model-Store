@@ -14,6 +14,7 @@ const eslintConfig = [
 
   {
     rules: {
+      '@typescript-eslint/ban-types': 'off',
       "@next/next/no-img-element": "off",
       "@next/next/no-html-link-for-pages": "off",
       "react-hooks/rules-of-hooks": "off",

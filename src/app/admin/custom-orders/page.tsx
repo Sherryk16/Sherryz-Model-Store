@@ -366,7 +366,7 @@ export default function AdminCustomOrdersPage() {
                           {selectedOrder.status !== 'cancelled' && (
                             <Button
                               onClick={() => updateOrderStatus(selectedOrder.id, 'cancelled')}
-                              variant="destructive"
+                              variant="outline"
                               size="sm"
                             >
                               Cancel Order
@@ -375,7 +375,7 @@ export default function AdminCustomOrdersPage() {
                           
                           <Button
                             onClick={() => handleDeleteOrder(selectedOrder.id)}
-                            variant="destructive"
+                            variant="outline"
                             size="sm"
                           >
                             Delete Order

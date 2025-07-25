@@ -16,6 +16,7 @@ interface Product {
   isNew?: boolean
   sizes?: string[]
   colors?: string[]
+  description?: string
 }
 
 export function FeaturedProducts() {
@@ -68,6 +69,7 @@ export function FeaturedProducts() {
             sizes={product.sizes}
             colors={product.colors}
             monochrome
+            description={product.description || ''}
           />
         ))}
       </div>

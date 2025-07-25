@@ -7,7 +7,7 @@ import { X, ArrowUp, ArrowDown } from 'lucide-react'
 
 export default function EditProduct() {
   const router = useRouter()
-  const { id } = useParams()
+  const { id } = useParams() as { id: string }
   const [name, setName] = useState('')
   const [price, setPrice] = useState('')
   const [originalPrice, setOriginalPrice] = useState('')

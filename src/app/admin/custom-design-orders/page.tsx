@@ -213,7 +213,7 @@ export default function AdminCustomDesignOrdersPage() {
                       <Button size="sm" onClick={() => updateOrderStatus(order.id, 'processing')}>Processing</Button>
                       <Button size="sm" onClick={() => updateOrderStatus(order.id, 'shipped')}>Shipped</Button>
                       <Button size="sm" onClick={() => updateOrderStatus(order.id, 'delivered')}>Delivered</Button>
-                      <Button size="sm" onClick={() => updateOrderStatus(order.id, 'cancelled')} variant="destructive">Cancel</Button>
+                      <Button size="sm" onClick={() => updateOrderStatus(order.id, 'cancelled')} variant="outline">Cancel</Button>
                     </div>
                   </div>
                 </div>

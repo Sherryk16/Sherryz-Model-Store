@@ -48,7 +48,7 @@ export function Navbar() {
       try {
         const { data, error } = await supabase
           .from('products')
-          .select('id, name, price, image_url')
+          .select('id, name, price, image_url, description, category')
           .ilike('name', `%${search}%`)
           .order('name')
         if (error) throw error
@@ -314,6 +314,7 @@ export function Navbar() {
                           price={product.price}
                           image={product.image_url}
                           category={product.category || ''}
+                          description={product.description || ''}
                         />
                       </div>
                     ))}

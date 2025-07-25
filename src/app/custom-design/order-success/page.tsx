@@ -1,9 +1,9 @@
 'use client'
 
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 
-export default function OrderSuccessRedirectPage() {
+function OrderSuccessRedirectInner() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const orderId = searchParams.get('orderId')
@@ -23,5 +23,13 @@ export default function OrderSuccessRedirectPage() {
         <p className="text-gray-600">Redirecting...</p>
       </div>
     </div>
+  )
+}
+
+export default function OrderSuccessRedirectPage() {
+  return (
+    <Suspense>
+      <OrderSuccessRedirectInner />
+    </Suspense>
   )
 }

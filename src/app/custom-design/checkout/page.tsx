@@ -40,6 +40,8 @@ interface CustomOrder {
   selectedColor: string;
   totalPrice: number;
   timestamp: number;
+  elements?: DesignElement[]; // Added
+  designColor?: string;       // Added
 }
 
 interface CustomerInfo {

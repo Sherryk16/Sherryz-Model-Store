@@ -601,7 +601,7 @@ export default function CustomDesignPage() {
             <h3 className="text-lg font-semibold mb-4">Actions</h3>
             <div className="grid grid-cols-2 gap-2">
                 <Button onClick={rotateElement} disabled={!selectedElement} variant="outline"><RotateCw className="mr-2 h-4 w-4" /> Rotate</Button>
-                <Button onClick={deleteSelectedElement} disabled={!selectedElement} variant="destructive"><RotateCw className="mr-2 h-4 w-4" /> Delete</Button>
+                <Button onClick={deleteSelectedElement} disabled={!selectedElement} variant="outline"><RotateCw className="mr-2 h-4 w-4" /> Delete</Button>
                 <Button onClick={saveDesign} variant="outline" className="col-span-2"><Save className="mr-2 h-4 w-4" /> Save Design</Button>
                 <Button onClick={downloadDesign} variant="outline" className="col-span-2"><Download className="mr-2 h-4 w-4" /> Download View</Button>
             </div>

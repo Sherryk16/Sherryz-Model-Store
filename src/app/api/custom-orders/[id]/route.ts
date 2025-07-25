@@ -1,17 +1,13 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
 import supabase from '@/lib/supabase'
 
-// Type for the dynamic route parameter
-interface RouteParams {
-  params: {
-    id: string
-  }
-}
-
-// GET custom order by ID
-export async function GET(_req: NextRequest, { params }: RouteParams) {
+// GET custom order
+export async function GET(
+  request: NextRequest,
+  context: any
+) {
   try {
-    const { id } = params
+    const { id } = context.params as { id: string }
 
     const { data, error } = await supabase
       .from('custom_orders')
@@ -35,11 +31,14 @@ export async function GET(_req: NextRequest, { params }: RouteParams) {
   }
 }
 
-// PUT update custom order by ID
-export async function PUT(req: NextRequest, { params }: RouteParams) {
+// PUT custom order
+export async function PUT(
+  request: NextRequest,
+  context: any
+) {
   try {
-    const { id } = params
-    const body = await req.json()
+    const { id } = context.params as { id: string }
+    const body = await request.json()
 
     const { error } = await supabase
       .from('custom_orders')
@@ -58,10 +57,13 @@ export async function PUT(req: NextRequest, { params }: RouteParams) {
   }
 }
 
-// DELETE custom order by ID
-export async function DELETE(_req: NextRequest, { params }: RouteParams) {
+// DELETE custom order
+export async function DELETE(
+  request: NextRequest,
+  context: any
+) {
   try {
-    const { id } = params
+    const { id } = context.params as { id: string }
 
     const { error } = await supabase
       .from('custom_orders')

@@ -18,6 +18,9 @@ interface Order {
   created_at: string
   updated_at: string
   items: ProductItem[]
+  customer_name?: string
+  customer_email?: string
+  customer_phone?: string
 }
 
 export default function AdminOrders() {
@@ -50,12 +53,12 @@ export default function AdminOrders() {
           <div key={order.id} className="border rounded-xl p-4 shadow-sm bg-white">
             <div className="mb-3">
               <p><strong>Order ID:</strong> {order.id}</p>
-              <p><strong>Customer:</strong> {order.customer_name}</p>
-              <p><strong>Email:</strong> {order.customer_email}</p>
-              <p><strong>Phone:</strong> {order.customer_phone}</p>
               <p><strong>Status:</strong> <span className="text-blue-600 capitalize">{order.status}</span></p>
               <p><strong>Total Price:</strong> PKR {order.total_price}</p>
               <p><strong>Created:</strong> {new Date(order.created_at).toLocaleString()}</p>
+              <p><strong>Customer:</strong> {order.customer_name || 'N/A'}</p>
+              <p><strong>Email:</strong> {order.customer_email || 'N/A'}</p>
+              <p><strong>Phone:</strong> {order.customer_phone || 'N/A'}</p>
             </div>
 
             <div className="mb-3">

@@ -23,7 +23,7 @@ export function AddToCartButton({ product, disabled = false }: { product: Produc
 
   const handleAdd = () => {
     setLoading(true)
-    addToCart({ ...product, colors: product.colors || [], sizes: product.sizes || [] })
+    addToCart({ ...product })
     setTimeout(() => {
       setLoading(false)
       router.push('/cart')

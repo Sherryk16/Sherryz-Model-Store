@@ -2,15 +2,12 @@ import supabase from '@/lib/supabase'
 import ProductDetailClient from '@/components/ProductDetailClient'
 import { ProductCard } from '@/components/ProductCard'
 
-interface ProductPageProps {
-  params: { id: string }
-}
-
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage(props: any) {
+  const { id } = (props.params as { id: string })
   const { data: product, error } = await supabase
     .from('products')
     .select('*')
-    .eq('id', params.id)
+    .eq('id', id)
     .single()
 
   if (error) {

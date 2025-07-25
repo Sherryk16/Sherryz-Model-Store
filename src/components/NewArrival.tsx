@@ -64,7 +64,6 @@ export function NewArrivals() {
               price={product.price}
               image={product.image_url}
               category={product.category}
-              rating={product.rating}
               description={product.description}
               sizes={product.sizes}
               colors={product.colors}

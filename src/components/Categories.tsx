@@ -18,9 +18,17 @@ export function Categories() {
     const fetchCategories = async () => {
       const { data, error } = await supabase
         .from('products')
-        .select('category, count:category', { count: 'exact', groupBy: 'category' })
+        .select('category')
       if (error) setError('Failed to load categories.')
-      if (data) setCategories(data.map((c: any) => ({ name: c.category, product_count: c.count })))
+      if (data) {
+        // Group by category and count
+        const categoryMap = data.reduce((acc: Record<string, number>, curr: any) => {
+          if (!curr.category) return acc;
+          acc[curr.category] = (acc[curr.category] || 0) + 1;
+          return acc;
+        }, {});
+        setCategories(Object.entries(categoryMap).map(([name, count]) => ({ name, product_count: count as number })));
+      }
       setLoading(false)
     }
     fetchCategories()

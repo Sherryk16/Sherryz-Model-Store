@@ -33,7 +33,7 @@ interface CustomOrder {
 }
 
 export default function CustomOrderSuccessPage() {
-  const params = useParams()
+  const { id } = useParams() as { id: string }
   const router = useRouter()
   const [order, setOrder] = useState<CustomOrder | null>(null)
   const [loading, setLoading] = useState(true)
@@ -41,7 +41,7 @@ export default function CustomOrderSuccessPage() {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const response = await fetch(`/api/custom-orders/${params.id}`)
+        const response = await fetch(`/api/custom-orders/${id}`)
         if (response.ok) {
           const orderData = await response.json()
           setOrder(orderData)
@@ -57,10 +57,10 @@ export default function CustomOrderSuccessPage() {
       }
     }
 
-    if (params.id) {
+    if (id) {
       fetchOrder()
     }
-  }, [params.id, router])
+  }, [id, router])
 
   if (loading) {
     return (

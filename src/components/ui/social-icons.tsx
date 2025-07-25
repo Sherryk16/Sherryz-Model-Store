@@ -1,5 +1,6 @@
 'use client'
 
+import React from "react"
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaWhatsapp } from 'react-icons/fa'
 
 interface SocialIconProps {
@@ -8,7 +9,7 @@ interface SocialIconProps {
   size?: number
 }
 
-const platformIcons: Record<string, (size: number) => JSX.Element> = {
+const platformIcons: Record<string, (size: number) => React.ReactElement> = {
   facebook: (size) => <FaFacebook size={size} color="#1877F3" />,
   instagram: (size) => <FaInstagram size={size} color="#E4405F" />,
   twitter: (size) => <FaTwitter size={size} color="#1DA1F2" />,

@@ -1,24 +1,15 @@
 // app/api/checkout/route.ts
 
-import { createClient } from '@supabase/supabase-js';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import supabase from '@/lib/supabase';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_KEY!
-);
-
-// app/api/checkout/route.ts
-
-
-
-export async function POST(req: Request) {
+export async function POST(request: NextRequest) {
   try {
-    const body = await req.json();
+    const body = await request.json();
 
     // Calculate total price based on the items in the order
     const totalPrice = body.items.reduce(
-      (total:any, item:any) => total + (item.price * item.quantity),
+      (total: number, item: any) => total + (item.price * item.quantity),
       0
     );
 

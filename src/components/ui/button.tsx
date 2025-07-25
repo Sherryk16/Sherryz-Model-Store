@@ -7,6 +7,7 @@ interface ButtonProps {
   variant?: 'default' | 'outline'
   size?: 'sm' | 'md' | 'lg'
   onClick?: () => void
+  disabled?: boolean
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -15,6 +16,7 @@ export const Button: React.FC<ButtonProps> = ({
   variant = 'default',
   size = 'md',
   onClick,
+  disabled = false,
 }) => {
   const baseStyle = 'transition-all font-semibold rounded-md focus:outline-none'
   const sizeStyles = {
@@ -30,6 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
     <button
       onClick={onClick}
       className={`${baseStyle} ${sizeStyles[size]} ${variantStyles} ${className}`}
+      disabled={disabled}
     >
       {children}
     </button>
