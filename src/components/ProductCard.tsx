@@ -122,7 +122,6 @@ export function ProductCard({
         </div>
         <div className="px-4 pb-4 pt-2 flex-1 flex flex-col">
           <h3 className={`font-semibold text-lg mb-1 ${heading}`}>{name}</h3>
-          <p className="text-gray-500 text-sm mb-2">{description}</p> {/* Display description */}
           <div className="mb-2 flex items-center gap-2">
             <span className={`inline-block font-bold px-3 py-1 rounded-full text-xs shadow-sm ${priceBadge}`}>PKR {price?.toLocaleString?.() ?? price}</span>
             {hasDiscount && (
